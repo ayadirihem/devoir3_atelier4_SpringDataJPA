@@ -6,20 +6,31 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rihem.medicament.entities.Medicament;
 import com.rihem.medicament.service.MedicamentService;
 
 @Controller
-public class MedicamentController {
+public class MedicamentController implements CommandLineRunner {
 	
 	@Autowired
 	MedicamentService medicamentService;
+	
+	@Override
+	public void run(String... args) throws Exception {
+		medicamentService.saveMedicament(new Medicament("HEMACTEROL Ampoules buvables C/100/10 ML", 30.0,50, new Date()));
+		medicamentService.saveMedicament(new Medicament("GRIPEX Sans Sucre ", 5.000,10, new Date()));
+		medicamentService.saveMedicament(new Medicament("MORPHINE CHLORHYDRATE AGUETTANT", 50.0,20, new Date()));
+		
+	}
 	
 	@RequestMapping("/showCreate")
 	public String showCreate() {
@@ -43,17 +54,28 @@ public class MedicamentController {
 	}
 	
 	@RequestMapping("/ListeMedicaments")
-	public String listeMedicament(ModelMap modelMap) {
-		List<Medicament> drugs= medicamentService.getAllMedicaments();
+	public String listeMedicament(ModelMap modelMap,
+			@RequestParam (name="page",defaultValue = "0") int page,
+			@RequestParam (name="size", defaultValue = "2") int size) {
+		Page<Medicament> drugs = medicamentService.getAllMedicamentsParPage(page, size);
 		modelMap.addAttribute("medicaments", drugs);
+		modelMap.addAttribute("pages", new int[drugs.getTotalPages()]);
+		modelMap.addAttribute("currentPage", page);
 		return "listeMedicaments";
 	}
 	@RequestMapping("/supprimerMedicament")
 	public String supprimerProduit(@RequestParam("id") Long id,
-			ModelMap modelMap) {
+			ModelMap modelMap,
+			@RequestParam (name="page",defaultValue = "0") int page,
+			@RequestParam (name="size", defaultValue = "2") int size) {
 		medicamentService.deleteMedicamentById(id);
-		List<Medicament> drugs= medicamentService.getAllMedicaments();
+		Page<Medicament> drugs= medicamentService.getAllMedicamentsParPage(page, size);
 		modelMap.addAttribute("medicaments", drugs);
+		modelMap.addAttribute("pages", new int[drugs.getTotalPages()]);
+		modelMap.addAttribute("currentPage", page);
+		modelMap.addAttribute("size", size);
+		
+		
 		return "listeMedicaments";
 	}
 	
@@ -77,4 +99,6 @@ public class MedicamentController {
 		modelMap.addAttribute("medicaments",drugs);
 		return "listeMedicaments";
 	}
+
+	
 }

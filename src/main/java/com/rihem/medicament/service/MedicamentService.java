@@ -2,6 +2,8 @@ package com.rihem.medicament.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.rihem.medicament.entities.Medicament;
 
 public interface MedicamentService {
@@ -12,5 +14,6 @@ public interface MedicamentService {
 	void deleteMedicamentById(Long id);
 	Medicament getMedicament(Long id);
 	List<Medicament> getAllMedicaments();
+	Page<Medicament> getAllMedicamentsParPage(int page, int size);
 
 }

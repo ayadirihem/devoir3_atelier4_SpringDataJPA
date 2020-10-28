@@ -3,6 +3,8 @@ package com.rihem.medicament.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.rihem.medicament.entities.Medicament;
@@ -48,6 +50,10 @@ public class MedicamentServiceImpl implements MedicamentService {
 	public List<Medicament> getAllMedicaments() {
 		// TODO Auto-generated method stub
 		return medicamentRepository.findAll();
+	}
+	@Override
+	public Page<Medicament> getAllMedicamentsParPage(int page, int size) {
+	      return medicamentRepository.findAll(PageRequest.of(page, size));
 	}
 
 }
