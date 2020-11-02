@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.rihem.medicament.entities.Categorie;
 import com.rihem.medicament.entities.Medicament;
 import com.rihem.medicament.repos.MedicamentRepository;
 
@@ -54,6 +55,41 @@ public class MedicamentServiceImpl implements MedicamentService {
 	@Override
 	public Page<Medicament> getAllMedicamentsParPage(int page, int size) {
 	      return medicamentRepository.findAll(PageRequest.of(page, size));
+	}
+
+	@Override
+	public List<Medicament> findByNomMedicament(String nom) {
+		return medicamentRepository.findByNomMedicament(nom);
+	}
+
+	@Override
+	public List<Medicament> findByNomMedicamentContains(String nom) {
+		return medicamentRepository.findByNomMedicamentContains(nom);
+	}
+
+	@Override
+	public List<Medicament> findByNomPrix(String nom, Double prix) {
+		return medicamentRepository.findByNomPrix(nom, prix);
+	}
+
+	@Override
+	public List<Medicament> findByCategorie(Categorie categorie) {
+		return medicamentRepository.findByCategorie(categorie);
+	}
+
+	@Override
+	public List<Medicament> findByCategorieIdCat(Long id) {
+		return medicamentRepository.findByCategorieIdCat(id);
+	}
+
+	@Override
+	public List<Medicament> findByOrderByNomMedicamentAsc() {
+		return medicamentRepository.findByOrderByNomMedicamentAsc();
+	}
+
+	@Override
+	public List<Medicament> trierMedicamentsNomsPrix() {
+		return medicamentRepository.trierMedicamentsNomsPrix();
 	}
 
 }

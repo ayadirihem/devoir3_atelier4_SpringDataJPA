@@ -26,9 +26,7 @@ public class MedicamentController implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		medicamentService.saveMedicament(new Medicament("HEMACTEROL Ampoules buvables C/100/10 ML", 30.0,50, new Date()));
-		medicamentService.saveMedicament(new Medicament("GRIPEX Sans Sucre ", 5.000,10, new Date()));
-		medicamentService.saveMedicament(new Medicament("MORPHINE CHLORHYDRATE AGUETTANT", 50.0,20, new Date()));
+		
 		
 	}
 	
