@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 
-import com.rihem.medicament.entities.Categorie;
+import com.rihem.medicament.entities.TypeMedicament;
 import com.rihem.medicament.entities.Medicament;
 import com.rihem.medicament.repos.MedicamentRepository;
 import com.rihem.medicament.service.MedicamentService;
@@ -45,35 +45,36 @@ class MedicamentApplicationTests {
 	public void testfindByNomPrix() {
 		List<Medicament> drugs = medicamentRepository.findByNomPrix("panadol", 2530.0);
 	}
+	
 	@Test
-	public void testfindByCategorie()
+	public void testfindByTypeMedicament()
 	{
-	    Categorie cat = new Categorie();
-	    cat.setIdCat(1L);
-	    List<Medicament> drugs = medicamentRepository.findByCategorie(cat);
+	    TypeMedicament typ = new TypeMedicament();
+	    typ.setIdType(1L);
+	    List<Medicament> drugs = medicamentRepository.findByTypeMedicament(typ);
 	    for (Medicament d : drugs)
 	           {
 	              System.out.println(d);
 	           }
 	}
 	@Test
-	public void findByCategorieIdCat()
+	public void findByTypeMedicamentIdTyp()
 	{
-	List<Medicament> drugs = medicamentRepository.findByCategorieIdCat(1L);
+	List<Medicament> drugs = medicamentRepository.findByTypeMedicamentIdType(1L);
 	for (Medicament d : drugs)
 	  {
 	   System.out.println(d);
 	  }
 	}
 	@Test
-	public void testfindByOrderByNomProduitAsc()
+	public void findByOrderByNomMedicamentAsc()
 	{
 	    List<Medicament> drugs = medicamentRepository.findByOrderByNomMedicamentAsc();
 	    for (Medicament d : drugs){
 	           System.out.println(d);
 	     }
 	}
-	@Test public void testTrierProduitsNomsPrix()
+	@Test public void trierMedicamentsNomsPrix()
 	{
 	      List<Medicament> drugs = medicamentRepository.trierMedicamentsNomsPrix();
 	      for (Medicament d : drugs)

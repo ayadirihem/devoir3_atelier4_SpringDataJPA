@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.rihem.medicament.entities.Categorie;
+import com.rihem.medicament.entities.TypeMedicament;
 import com.rihem.medicament.entities.Medicament;
 import com.rihem.medicament.repos.MedicamentRepository;
 
@@ -73,16 +73,16 @@ public class MedicamentServiceImpl implements MedicamentService {
 	}
 
 	@Override
-	public List<Medicament> findByCategorie(Categorie categorie) {
-		return medicamentRepository.findByCategorie(categorie);
+	public List<Medicament> findByTypeMedicament(TypeMedicament typemedicament) {
+		return medicamentRepository.findByTypeMedicament(typemedicament);
 	}
 
 	@Override
-	public List<Medicament> findByCategorieIdCat(Long id) {
-		return medicamentRepository.findByCategorieIdCat(id);
+	public List<Medicament> findByTypeMedicamentIdType(Long id) {
+		return medicamentRepository.findByTypeMedicamentIdType(id);
 	}
 
-	@Override
+	/*@Override
 	public List<Medicament> findByOrderByNomMedicamentAsc() {
 		return medicamentRepository.findByOrderByNomMedicamentAsc();
 	}
@@ -90,6 +90,6 @@ public class MedicamentServiceImpl implements MedicamentService {
 	@Override
 	public List<Medicament> trierMedicamentsNomsPrix() {
 		return medicamentRepository.trierMedicamentsNomsPrix();
-	}
+	}*/
 
 }

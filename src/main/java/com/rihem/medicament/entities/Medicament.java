@@ -16,8 +16,8 @@ public class Medicament {
 	private Double prixMedicament;
 	private int qteMedicament;
 	private Date dateCreation;
-	@ManyToOne
-	private Categorie categorie;
+		@ManyToOne
+		private TypeMedicament typeMedicament;
 	
 	public Medicament() {
 		super();
