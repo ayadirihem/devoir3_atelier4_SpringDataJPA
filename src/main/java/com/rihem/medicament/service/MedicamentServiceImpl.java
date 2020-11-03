@@ -82,7 +82,7 @@ public class MedicamentServiceImpl implements MedicamentService {
 		return medicamentRepository.findByTypeMedicamentIdType(id);
 	}
 
-	/*@Override
+	@Override
 	public List<Medicament> findByOrderByNomMedicamentAsc() {
 		return medicamentRepository.findByOrderByNomMedicamentAsc();
 	}
@@ -90,6 +90,6 @@ public class MedicamentServiceImpl implements MedicamentService {
 	@Override
 	public List<Medicament> trierMedicamentsNomsPrix() {
 		return medicamentRepository.trierMedicamentsNomsPrix();
-	}*/
+	}
 
 }

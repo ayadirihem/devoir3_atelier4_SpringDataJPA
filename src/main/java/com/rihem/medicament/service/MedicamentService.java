@@ -21,8 +21,8 @@ public interface MedicamentService {
 	List<Medicament> findByNomPrix (String nom, Double prix);
 	List<Medicament> findByTypeMedicament (TypeMedicament typemedicament);
 	 List<Medicament> findByTypeMedicamentIdType(Long id);
-	 /* List<Medicament> findByOrderByNomMedicamentAsc();
+	List<Medicament> findByOrderByNomMedicamentAsc();
 	List<Medicament> trierMedicamentsNomsPrix();
-	*/
+	
 
 }
