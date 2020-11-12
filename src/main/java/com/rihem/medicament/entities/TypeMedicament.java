@@ -26,5 +26,6 @@ public class TypeMedicament {
 	@OneToMany(mappedBy = "typeMedicament")
 	private List<Medicament> medicaments;
 	
+	
 
 }

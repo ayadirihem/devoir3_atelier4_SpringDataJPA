@@ -62,7 +62,14 @@ public class Medicament {
 	@Override
 	public String toString() {
 		return "Medicament [idMedicament=" + idMedicament + ", nomMedicament=" + nomMedicament + ", prixMedicament="
-				+ prixMedicament + ", qteMedicament=" + qteMedicament + ", dateCreation=" + dateCreation + "]";
+				+ prixMedicament + ", qteMedicament=" + qteMedicament + ", dateCreation=" + dateCreation + "Type de medicament" +
+				typeMedicament+"]";
+	}
+	public TypeMedicament getTypeMedicament() {
+		return typeMedicament;
+	}
+	public void setTypeMedicament(TypeMedicament typeMedicament) {
+		this.typeMedicament = typeMedicament;
 	}
 
 }

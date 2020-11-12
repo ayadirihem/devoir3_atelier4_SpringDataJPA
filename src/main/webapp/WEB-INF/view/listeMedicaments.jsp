@@ -35,7 +35,7 @@ Liste des Medicaments
 <div class="card-body">
 <table class="table table-hover table-reflow">
 <tr>
-<th>ID</th><th>Nom Medicament</th><th>Prix</th><th>Qte</th><th>Date Création</th><th>Suppression<th>Edition</th>
+<th>ID</th><th>Nom Medicament</th><th>Prix</th><th>Qte</th><th>Date Création</th><th></th><th>Suppression<th>Edition</th>
 </tr>
 <c:forEach items="${medicaments}" var="p">
 <tr>
